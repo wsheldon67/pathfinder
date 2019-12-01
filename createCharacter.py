@@ -26,7 +26,9 @@ def save():
     selectedClass = classes[classSelect.curselection()[0]]
     global characterName
     selectedName = characterName.get()
-    print(selectedName, selectedRace, selectedClass)
+    saveConcat = (selectedName, selectedRace, selectedClass)
+    with conn:
+        c.execute('INSERT INTO characters (name, race, class) VALUES (?, ?, ?)', saveConcat)
 
 def post(parent):
     # name
