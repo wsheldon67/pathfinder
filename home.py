@@ -1,34 +1,18 @@
 from tkinter import *
 from tkinter import ttk
-import skills
-import character
-import abilities
+import create
 
-# tk window
+def createCharacter():
+    createWindow = Toplevel(root)
+    create.post(createWindow)
+
 root = Tk()
-mainframe = ttk.Frame(root)
-mainframe.grid()
+root.option_add("*tearOff", FALSE)
 
-# tk notebook
-n = ttk.Notebook(mainframe)
-n.grid(row=0, column=0)
-
-# skills
-skillFrame = ttk.Frame(n)
-skillFrame.grid()
-n.add(skillFrame, text='Skills')
-skills.post(skillFrame)
-
-# character
-characterFrame = ttk.Frame(n)
-characterFrame.grid()
-n.add(characterFrame, text='Character')
-character.post(characterFrame)
-
-# abilities
-abilityFrame = ttk.Frame(n)
-abilityFrame.grid()
-n.add(abilityFrame, text='Abilities')
-#abilities.post(abilityFrame)
+menubar = Menu(root)
+root['menu'] = menubar
+menu_file = Menu(menubar)
+menubar.add_cascade(menu=menu_file, label='File')
+menu_file.add_command(label='Create a Character', command=createCharacter)
 
 root.mainloop()

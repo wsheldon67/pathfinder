@@ -57,4 +57,6 @@ def post(parent):
     classSelect.grid(row=2, column=2)
     classSelect.selection_set(classes.index(characterInfo['class']))
     # submit
-    ttk.Button(parent, text="Save", command=save).grid(row=3, column=0, sticky='N')
+    global saveButton
+    saveButton = ttk.Button(parent, text="Save")
+    saveButton.grid(row=3, column=0)
