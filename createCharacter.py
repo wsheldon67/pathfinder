@@ -7,9 +7,8 @@ conn = sqlite3.connect('pathfinder.db')
 c = conn.cursor()
 # get races
 c.execute('SELECT race FROM races')
-sqlResult = c.fetchall()
 races = []
-for i in sqlResult:
+for i in c.fetchall():
     races.append(i[0])
 
 # get classes
@@ -20,6 +19,11 @@ for i in c.fetchall():
 
 characterInfo = {}
 
+def save():
+    global raceSelect
+    selectedRace = races[raceSelect.curselection()[0]]
+    print(selectedRace)
+
 def post(parent):
     # name
     ttk.Label(parent, text="Name").grid(row=1, column=0)
@@ -28,10 +32,14 @@ def post(parent):
     # race
     ttk.Label(parent, text="Race").grid(row=1, column=1)
     raceList = StringVar(value=races)
+    global raceSelect
     raceSelect = Listbox(parent, listvariable=raceList, height=15)
     raceSelect.grid(row=2, column=1)
     # class
     ttk.Label(parent, text="Class").grid(row=1, column=2)
     classList = StringVar(value=classes)
+    global classSelect
     classSelect = Listbox(parent, listvariable=classList, height=15)
     classSelect.grid(row=2, column=2)
+    # submit
+    ttk.Button(parent, text="Save", command=save).grid(row=3, column=0, sticky='N')
