@@ -17,7 +17,7 @@ skills = c.fetchall()
 skillElements = {}
 
 # save skills
-def submitSkills():
+def save():
     concatQ = []
     for i in skills:
         q = (skillElements[i[0]].get(), i[0])
@@ -45,8 +45,6 @@ def post(parent):
         # class bonuses
         ttk.Label(parent, text=int(i[2])*3).grid(row=counter, column=2)
         counter += 1
-
-    ttk.Button(parent, text="Save", command=submitSkills).grid(row=counter, column=0)
 
 def update():
     print("weo")
