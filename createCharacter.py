@@ -17,17 +17,16 @@ classes = []
 for i in c.fetchall():
     classes.append(i[0])
 
+characterInfo = {}
+
 def save():
     global raceSelect
-    print(raceSelect.curselection())
     selectedRace = races[raceSelect.curselection()[0]]
     global classSelect
-    print(classSelect.curselection())
     selectedClass = classes[classSelect.curselection()[0]]
     global characterName
     selectedName = characterName.get()
-    print(selectedName)
-
+    print(selectedName, selectedRace, selectedClass)
 
 def post(parent):
     # name
@@ -39,13 +38,13 @@ def post(parent):
     ttk.Label(parent, text="Race").grid(row=1, column=1)
     raceList = StringVar(value=races)
     global raceSelect
-    raceSelect = Listbox(parent, listvariable=raceList, height=15)
+    raceSelect = Listbox(parent, listvariable=raceList, height=15, exportselection=0)
     raceSelect.grid(row=2, column=1)
     # class
     ttk.Label(parent, text="Class").grid(row=1, column=2)
     classList = StringVar(value=classes)
     global classSelect
-    classSelect = Listbox(parent, listvariable=classList, height=15)
+    classSelect = Listbox(parent, listvariable=classList, height=15, exportselection=0)
     classSelect.grid(row=2, column=2)
     # submit
     ttk.Button(parent, text="Save", command=save).grid(row=3, column=0, sticky='N')
