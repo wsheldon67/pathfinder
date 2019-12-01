@@ -1,7 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 import skills
-import createCharacter
+import character
 
 # tk window
 root = Tk()
@@ -18,16 +18,10 @@ skillFrame.grid()
 n.add(skillFrame, text='Skills')
 skills.post(skillFrame)
 
-# character manager
-characterManagerFrame = ttk.Frame(n)
-characterManagerFrame.grid()
-n.add(characterManagerFrame, text='Manage Characters')
-characterManagerNotebook = ttk.Notebook(characterManagerFrame)
-characterManagerNotebook.grid(row=0, column=0)
-# character create
-createCharacterFrame = ttk.Frame(characterManagerNotebook)
-createCharacterFrame.grid()
-characterManagerNotebook.add(createCharacterFrame, text='Create')
-createCharacter.post(createCharacterFrame)
+# character
+characterFrame = ttk.Frame(n)
+characterFrame.grid()
+n.add(characterFrame, text='Character')
+character.post(characterFrame)
 
 root.mainloop()
