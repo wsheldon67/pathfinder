@@ -17,18 +17,24 @@ classes = []
 for i in c.fetchall():
     classes.append(i[0])
 
-characterInfo = {}
-
 def save():
     global raceSelect
+    print(raceSelect.curselection())
     selectedRace = races[raceSelect.curselection()[0]]
-    print(selectedRace)
+    global classSelect
+    print(classSelect.curselection())
+    selectedClass = classes[classSelect.curselection()[0]]
+    global characterName
+    selectedName = characterName.get()
+    print(selectedName)
+
 
 def post(parent):
     # name
     ttk.Label(parent, text="Name").grid(row=1, column=0)
-    characterInfo['name'] = StringVar()
-    ttk.Entry(parent, textvariable=characterInfo['name']).grid(row=2, column=0, sticky='N')
+    global characterName
+    characterName = StringVar()
+    ttk.Entry(parent, textvariable=characterName).grid(row=2, column=0, sticky='N')
     # race
     ttk.Label(parent, text="Race").grid(row=1, column=1)
     raceList = StringVar(value=races)
