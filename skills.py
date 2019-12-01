@@ -2,7 +2,6 @@ from tkinter import *
 from tkinter import ttk
 import sqlite3
 # table headers
-headers = ['Skills', 'Ranks']
 headers = ['Skills', 'Ranks', 'Class Bonus']
 
 # get records from db
