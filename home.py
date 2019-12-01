@@ -2,6 +2,7 @@ from tkinter import *
 from tkinter import ttk
 import skills
 import character
+import abilities
 
 # tk window
 root = Tk()
@@ -23,5 +24,11 @@ characterFrame = ttk.Frame(n)
 characterFrame.grid()
 n.add(characterFrame, text='Character')
 character.post(characterFrame)
+
+# abilities
+abilityFrame = ttk.Frame(n)
+abilityFrame.grid()
+n.add(abilityFrame, text='Abilities')
+#abilities.post(abilityFrame)
 
 root.mainloop()
