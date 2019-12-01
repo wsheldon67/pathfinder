@@ -22,24 +22,29 @@ characterInfo = {}
 def save():
     global raceSelect
     selectedRace = races[raceSelect.curselection()[0]]
-    print(selectedRace)
+    global classSelect
+    selectedClass = classes[classSelect.curselection()[0]]
+    global characterName
+    selectedName = characterName.get()
+    print(selectedName, selectedRace, selectedClass)
 
 def post(parent):
     # name
     ttk.Label(parent, text="Name").grid(row=1, column=0)
-    characterInfo['name'] = StringVar()
-    ttk.Entry(parent, textvariable=characterInfo['name']).grid(row=2, column=0, sticky='N')
+    global characterName
+    characterName = StringVar()
+    ttk.Entry(parent, textvariable=characterName).grid(row=2, column=0, sticky='N')
     # race
     ttk.Label(parent, text="Race").grid(row=1, column=1)
     raceList = StringVar(value=races)
     global raceSelect
-    raceSelect = Listbox(parent, listvariable=raceList, height=15)
+    raceSelect = Listbox(parent, listvariable=raceList, height=15, exportselection=0)
     raceSelect.grid(row=2, column=1)
     # class
     ttk.Label(parent, text="Class").grid(row=1, column=2)
     classList = StringVar(value=classes)
     global classSelect
-    classSelect = Listbox(parent, listvariable=classList, height=15)
+    classSelect = Listbox(parent, listvariable=classList, height=15, exportselection=0)
     classSelect.grid(row=2, column=2)
     # submit
     ttk.Button(parent, text="Save", command=save).grid(row=3, column=0, sticky='N')
